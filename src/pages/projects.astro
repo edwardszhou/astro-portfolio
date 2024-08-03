@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+const projects = await getCollection("projects");
+console.log(projects);
+---
+
+<Layout title="Projects | Edward Zhou">
+  <main>
+    <h1 class="text-8xl red p-4">Projects</h1>
+    {
+      projects.map((project) => (
+        <>
+          <a href={`/projects/${project.slug}`}>
+            <h2 class="text-3xl">{project.data.title}</h2>
+          </a>
+          <p class="text-gray-800 text-xl line-clamp-2">{project.body}</p>
+        </>
+      ))
+    }
+  </main>
+</Layout>
