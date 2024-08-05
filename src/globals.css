@@ -4,8 +4,8 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-  }
+  /* :root {
+  } */
 }
 
 @layer utilities {
@@ -15,8 +15,5 @@
     &::-webkit-scrollbar {
       display: none;
     }
-  }
-  .big {
-    font-size: xx-large;
   }
 }
