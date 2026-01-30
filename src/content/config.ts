@@ -7,6 +7,14 @@ const projectsCollection = defineCollection({
   }),
 });
 
+const blogCollection = defineCollection({
+  schema: z.object({
+    date: z.string(),
+    title: z.string(),
+  }),
+});
+
 export const collections = {
   projects: projectsCollection,
+  blogs: blogCollection,
 };

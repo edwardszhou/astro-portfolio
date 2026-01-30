@@ -5,27 +5,27 @@ import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 
 export const getStaticPaths = (async () => {
-  const projects = await getCollection("projects");
-  const paths = projects.map((project) => {
+  const blogs = await getCollection("blogs");
+  const paths = blogs.map((blog) => {
     return {
-      params: { slug: project.slug },
-      props: { project }
+      params: { slug: blog.slug },
+      props: { blog }
     };
   });
   return paths;
 }) satisfies GetStaticPaths;
 
 type Props = {
-  project: CollectionEntry<"projects">;
+  blog: CollectionEntry<"blogs">;
 };
 
-const { project } = Astro.props;
-const { Content } = await project.render();
+const { blog } = Astro.props;
+const { Content } = await blog.render();
 ---
 
-<Layout title={project.data.title}>
+<Layout title={blog.data.title}>
   <main class="flex flex-col gap-4 px-96 py-32">
-    <h1 class="text-6xl font-medium">{project.data.title}</h1>
+    <h1 class="text-6xl font-medium">{blog.data.title}</h1>
     <hr />
     <div class="prose-lg h-fit">
       <Content />
